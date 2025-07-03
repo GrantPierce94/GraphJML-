@@ -114,20 +114,21 @@ Microsoft Entra ID
 CSV as HR system simulation
 
 ## Security Principles Demonstrated
-Least Privilege Access
-App Registration permissions are scoped to required Graph roles only (e.g., no Global Admin).
 
-Non-Interactive Authentication
-Uses Microsoft Graph App-Only access (client credentials flow), avoiding interactive logins.
+- **Least Privilege Access**  
+  App registration is scoped only to the required Microsoft Graph permissions (e.g., `User.ReadWrite.All`, `Group.ReadWrite.All`). No excessive admin roles are granted.
 
-Separation of Duties
-Each lifecycle action (Join, Move, Leave) runs in isolation to reduce blast radius and complexity.
+- **Non-Interactive Authentication**  
+  Uses app-only access via the OAuth 2.0 client credentials flow, removing the need for user credentials or interactive sessions.
 
-Auditability
-Every action is logged per user and lifecycle event in timestamped logs, enabling compliance tracking and SIEM integration.
+- **Separation of Duties**  
+  Joiner, Mover, and Leaver actions are split into dedicated scripts, reducing complexity and minimizing impact in case of errors.
 
-Validation Before Execution
-validate_csv.py ensures user data is clean and safe before the scripts run, preventing malformed input from corrupting your directory.
+- **Auditability**  
+  Each action logs timestamped events to individual log files. These logs support auditing, error tracking, and potential integration with SIEM platforms.
+
+- **Validation Before Execution**  
+  `validate_csv.py` enforces input structure and status correctness, helping prevent malformed or incomplete user data from impacting production.
 
 ## Contributors
 Grant Pierce (GitHub: @GrantPierce94) – Developer
