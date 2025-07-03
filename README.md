@@ -91,14 +91,15 @@ python log_monitor.py
 ## Repository Structure
 ```
 graphjml/
-├── joiner.ps1           # New user provisioning
-├── mover.ps1            # Internal role change logic
-├── leaver.ps1           # Secure offboarding logic
-├── log_monitor.py       # Python-based logging and status monitor
-├── users.csv            # Mock HR data input
-├── config.ps1           # (Optional) Secure token source
-├── requirements.txt     # Python dependency list
-└── README.md            # Project overview and instructions
+├── joiner.ps1            # Creates new users in Entra ID
+├── mover.ps1             # Modifies department/job title of existing users
+├── leaver.ps1            # Disables accounts and strips access
+├── validate_csv.py       # Verifies structure and values of the users.csv file
+├── send_report.py        # Summarizes and prints out the log reports
+├── users.csv             # Input file with mock HR data
+├── logs/                 # Output directory for audit logs
+├── requirements.txt      # Python dependencies
+└── README.md             # Full explanation
 ```
 
 ## Tools & Technologies
